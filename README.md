@@ -1,2 +1,2 @@
 # SortProject
-Proyecto javax.swing - Método de Ordenamiento Burbuja
+Proyecto javax.swing - Algoritmos Search && Sort en Java
