@@ -132,4 +132,60 @@ public class Ordenamiento {
         System.out.println("Tiempo de Ejecucion(ns):"+ tiempoEjecucion);        
         return X;
     }
+    //Metodo Shell
+    public Integer[] ShellSort(Integer X[]){
+        int salto,N,j,k;
+        N=X.length;
+        salto=N/2;
+        while(salto>0){
+            for(int i=salto;i<N;i++)
+            {
+                j=i-salto;
+                while(j>=0){
+                    k=j+salto;
+                    if(X[j]<=X[k])
+                        j=0;
+                    else
+                        intercambio(X,j,k);
+                    j=j-salto;
+                }//end while                
+            }//end for
+            salto=salto/2;
+        }//end while        
+        return X;
+    }
+    
+    private void intercambio(Integer X[],int p,int q){
+        int temp=X[p];
+        X[p]=X[q];
+        X[q]=temp;       
+    }
+    
+    //Metodo QuickSort    
+    public Integer[] CallQuickSort(Integer[] X)
+    {   Integer[] Y;
+        Y=QuickSort(X, 0, X.length - 1);
+        return Y;
+    }
+    public Integer[] QuickSort(Integer[] X, int start, int end)
+    {
+        if(start<end){
+            int pIndex=QuickSortPartition(X,start,end);
+            QuickSort(X,start,pIndex-1);
+            QuickSort(X,pIndex+1,end);
+        }
+        return X;
+    }
+    private int QuickSortPartition(Integer[] X, int start, int end){
+        int pivot=X[end];
+        int pIndex=start;
+        for(int i=start; i<end; i++){
+            if(X[i]<=pivot){
+                intercambio(X,i,pIndex);
+                pIndex++;
+            }//end if
+        }//end for
+        intercambio(X,pIndex,end);
+        return pIndex;
+    }
 }
