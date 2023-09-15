@@ -207,14 +207,14 @@ public class Ordenamiento {
     private Integer[] MergeSort(Integer[] X)
     {
         int n=X.length;
-        if(n<2) return X;
-        int mid=n/2;
+        if(n < 2) return X;
+        int mid = n/2;
         Integer[] left=new Integer[mid];
-        Integer[] right=new Integer[n-mid];
+        Integer[] right=new Integer[n - mid];
         for(int i=0;i<mid;i++)
-            left[i]=X[i];
+            left[i] = X[i];
         for(int i=mid;i<n;i++)
-            right[i]=X[i];        
+            right[i - mid] = X[i];        
         MergeSort(left);
         MergeSort(right);
         Merge(X,left,right );
@@ -225,7 +225,7 @@ public class Ordenamiento {
         int nR=right.length;
         int i=0,j=0,k=0;
         while(i<nL && i<nR){
-            if(left[i]<=right[j]){
+            if(left[i] <= right[j]){
                 X[k]=left[i];
                 i++;
             }else{
@@ -251,7 +251,7 @@ public class Ordenamiento {
         Integer[] Y=new Integer[X.length];
         HeapSortConstruct(X);//fase de construccion: contruir el heap
         Y=HeapSortExtract(X);//fase de extraccion los valores del nodo raiz        
-        return X;
+        return Y;
     }
     private Integer[] HeapSortConstruct(Integer[] X){
         int current = 0, maxChildIndex;
