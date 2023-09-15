@@ -26,6 +26,9 @@ public class Complejidad {
     public static final String QUICKSORT_COMPLEJIDAD_WORSTCASE = "O(n^2)";//rar vez se presenta,complejidad cuadratica
     public static final String QUICKSORT_COMPLEJIDAD_BESTCASE = "O(n * log(n))";//complejidad linealitmico
     public static final String QUICKSORT_COMPLEJIDAD_MIDLECASE = "O(n * log(n))";//complejidad linealitmico
-    
-     
+    public static final String MERGESORT_NCOMPARACIONES_WORSTCASE = "(n - 1) * lgn";
+    public static final String MERGESORT_NINTERCAMBIOS = "0";    
+    public static final String MERGESORT_COMPLEJIDAD_WORSTCASE = "O(nlgn)";
+    public static final String HEAPSORT_NCOMPARACIONES_WORSTCASE = "1.5nlgn";//considera todo el proceso de restricciones
+    public static final String HEAPSORT_COMPLEJIDAD_WORSTCASE = "O(nlgn)";     
 }

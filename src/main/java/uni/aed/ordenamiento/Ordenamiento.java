@@ -164,7 +164,12 @@ public class Ordenamiento {
     //Metodo QuickSort    
     public Integer[] CallQuickSort(Integer[] X)
     {   Integer[] Y;
+        long tiempoIni=System.nanoTime();
         Y=QuickSort(X, 0, X.length - 1);
+        long tiempoFin=System.nanoTime();
+        long tiempoEjecucion=tiempoFin-tiempoIni;        
+        this.settEjecucion(tiempoEjecucion);
+        System.out.println("Tiempo de Ejecucion(ns):"+ tiempoEjecucion);  
         return Y;
     }
     public Integer[] QuickSort(Integer[] X, int start, int end)
@@ -188,4 +193,122 @@ public class Ordenamiento {
         intercambio(X,pIndex,end);
         return pIndex;
     }
+    //Metodo MergeSort 
+    public Integer[] CallMergeSort(Integer[] X){
+        long tiempoIni=System.nanoTime();
+        MergeSort(X);
+        long tiempoFin=System.nanoTime();
+        long tiempoEjecucion=tiempoFin-tiempoIni;        
+        this.settEjecucion(tiempoEjecucion);
+        System.out.println("Tiempo de Ejecucion(ns):"+ tiempoEjecucion);           
+        return X;
+    }
+            
+    private Integer[] MergeSort(Integer[] X)
+    {
+        int n=X.length;
+        if(n<2) return X;
+        int mid=n/2;
+        Integer[] left=new Integer[mid];
+        Integer[] right=new Integer[n-mid];
+        for(int i=0;i<mid;i++)
+            left[i]=X[i];
+        for(int i=mid;i<n;i++)
+            right[i]=X[i];        
+        MergeSort(left);
+        MergeSort(right);
+        Merge(X,left,right );
+        return X;
+    }
+    private void Merge(Integer[] X,Integer[] left,Integer[] right){
+        int nL=left.length;
+        int nR=right.length;
+        int i=0,j=0,k=0;
+        while(i<nL && i<nR){
+            if(left[i]<=right[j]){
+                X[k]=left[i];
+                i++;
+            }else{
+                X[k]=left[j];
+                j++;                
+            }
+            k++;                
+        }
+        while(i<nL){
+            X[k]=left[i];
+            i++;
+            k++;
+        }
+        while(i<nR){
+            X[k]=right[j];
+            j++;
+            k++;
+        }
+        
+    }
+    //Metodo HeapSort 
+    public Integer[] HeapSort(Integer[] X){
+        Integer[] Y=new Integer[X.length];
+        HeapSortConstruct(X);//fase de construccion: contruir el heap
+        Y=HeapSortExtract(X);//fase de extraccion los valores del nodo raiz        
+        return X;
+    }
+    private Integer[] HeapSortConstruct(Integer[] X){
+        int current = 0, maxChildIndex;
+        boolean hecho;
+        for(int i=X.length-2/2;i>=0;i--)
+            current=i;
+            hecho=false;
+            while(!hecho){//2*i+1,2*i+2
+                if(2*current+1>X.length-1)
+                    //nodo actual no tiene hijos
+                    hecho=true;
+                else//el nodo actual tiene al menos un hijo                    
+                {
+                    maxChildIndex=HeapSortMaxChild(X,current,X.length-1);
+                    if(X[current]<X[maxChildIndex])//nodo padre con el maximo valor de los nodos hijo
+                    {
+                        intercambio(X,current,maxChildIndex);
+                        current=maxChildIndex;
+                    }else
+                        hecho=true;
+                }
+            }
+        return X;        
+    }
+    private int HeapSortMaxChild(Integer[] X, int loc,int end){
+        int result,Izq,Der;        
+        Izq=2*loc+1;
+        Der=2*loc+2;
+        if(Der<=end && X[Izq]<X[Der])
+            result=Der;
+        else
+            result=Izq;
+        return result;
+    }
+    private Integer[] HeapSortExtract(Integer[] X){
+        Integer[] Y=new Integer[X.length];//sortList
+        int current,maxChildIndex;
+        boolean hecho;
+        for(int i=X.length-1;i>=0;i--){
+            Y[i]=X[0];//colocando el nodo raiz en la posicion actual del nuevo heap
+            X[0]=X[i];//reemplazamo el valor del nodo raiz con el valor del ultimo nodo del heap
+            current=0;
+            hecho=false;
+            while(!hecho){
+                if(2*current+1 > i)
+                    hecho=true;
+                else{//si el nodo actual tiene al menos un hijo                    
+                    maxChildIndex=HeapSortMaxChild(X,current,i);
+                    if(X[current]<X[maxChildIndex])
+                    {intercambio(X,current,maxChildIndex);
+                        current=maxChildIndex;
+                    }else//la restrccion de la relacion de valor se cumple, por tanto terminar
+                        hecho=true;
+                }
+            }
+        }
+        return Y;
+    }
+    
 }
