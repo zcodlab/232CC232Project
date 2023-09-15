@@ -224,12 +224,12 @@ public class Ordenamiento {
         int nL=left.length;
         int nR=right.length;
         int i=0,j=0,k=0;
-        while(i<nL && i<nR){
+        while(i<nL && j<nR){
             if(left[i] <= right[j]){
                 X[k]=left[i];
                 i++;
             }else{
-                X[k]=left[j];
+                X[k]=right[j];
                 j++;                
             }
             k++;                
@@ -239,7 +239,7 @@ public class Ordenamiento {
             i++;
             k++;
         }
-        while(i<nR){
+        while(j<nR){
             X[k]=right[j];
             j++;
             k++;
@@ -253,14 +253,15 @@ public class Ordenamiento {
         Y=HeapSortExtract(X);//fase de extraccion los valores del nodo raiz        
         return Y;
     }
-    private Integer[] HeapSortConstruct(Integer[] X){
+    private void HeapSortConstruct(Integer[] X){
         int current = 0, maxChildIndex;
         boolean hecho;
-        for(int i=X.length-2/2;i>=0;i--)
+        for(int i=(X.length-2)/2;i>=0;i--)
+        {
             current=i;
-            hecho=false;
+            hecho = false;
             while(!hecho){//2*i+1,2*i+2
-                if(2*current+1>X.length-1)
+                if(2*current+1 > X.length-1)
                     //nodo actual no tiene hijos
                     hecho=true;
                 else//el nodo actual tiene al menos un hijo                    
@@ -273,8 +274,8 @@ public class Ordenamiento {
                     }else
                         hecho=true;
                 }
-            }
-        return X;        
+            }//end while   
+        }//end for
     }
     private int HeapSortMaxChild(Integer[] X, int loc,int end){
         int result,Izq,Der;        
