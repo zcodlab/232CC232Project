@@ -274,11 +274,17 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Nombre"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbNombreActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbEdad">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edad"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbEdadActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JComboBox" name="cbAlgoritmo">
           <Properties>
@@ -302,6 +308,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Ordenar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnOrdenarActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

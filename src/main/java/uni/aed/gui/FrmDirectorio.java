@@ -22,6 +22,7 @@ public class FrmDirectorio extends javax.swing.JFrame {
         jlInicial.setModel(modeloList1);
         jlFinal.setModel(modeloList2);
         dir=new DirectorioV1();
+        rbNombre.setSelected(true);
         txtNombre.requestFocus();
     }
 
@@ -167,14 +168,29 @@ public class FrmDirectorio extends javax.swing.JFrame {
         jpCriterios.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Criterios de Ordenamiento", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 17))); // NOI18N
 
         rbNombre.setText("Nombre");
+        rbNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbNombreActionPerformed(evt);
+            }
+        });
 
         rbEdad.setText("Edad");
+        rbEdad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbEdadActionPerformed(evt);
+            }
+        });
 
         cbAlgoritmo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Burbuja", "Insercion" }));
 
         jLabel4.setText("Algortimo:");
 
         btnOrdenar.setText("Ordenar");
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpCriteriosLayout = new javax.swing.GroupLayout(jpCriterios);
         jpCriterios.setLayout(jpCriteriosLayout);
@@ -327,6 +343,30 @@ public class FrmDirectorio extends javax.swing.JFrame {
         // TODO add your handling code here:
         Registrar();
     }//GEN-LAST:event_btnRegistrarKeyPressed
+
+    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        // TODO add your handling code here:
+        Persona[] sortedList;
+        if (rbNombre.isSelected())
+            sortedList=dir.sort(Persona.NAME,(String)cbAlgoritmo.getSelectedItem());
+        else
+            sortedList=dir.sort(Persona.AGE,(String)cbAlgoritmo.getSelectedItem());
+        
+        modeloList2.removeAllElements();
+        for(Persona p: sortedList)
+            modeloList2.addElement(p.toString());
+        
+    }//GEN-LAST:event_btnOrdenarActionPerformed
+
+    private void rbNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbNombreActionPerformed
+        // TODO add your handling code here:
+        rbEdad.setSelected(false);
+    }//GEN-LAST:event_rbNombreActionPerformed
+
+    private void rbEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbEdadActionPerformed
+        // TODO add your handling code here:
+        rbNombre.setSelected(false);
+    }//GEN-LAST:event_rbEdadActionPerformed
     private void clearEntry(){
         txtNombre.setText(CADENA_VACIA);
         txtEdad.setText(CADENA_VACIA);
