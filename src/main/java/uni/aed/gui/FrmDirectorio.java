@@ -4,17 +4,25 @@
  */
 package uni.aed.gui;
 
-/**
- *
- * @author hp
- */
-public class FrmDirectorio extends javax.swing.JFrame {
+import java.awt.event.KeyEvent;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import uni.aed.directorio.Directorio;
+import uni.aed.directorio.DirectorioV1;
+import uni.aed.model.Persona;
 
-    /**
-     * Creates new form FrmDirectorio
-     */
+public class FrmDirectorio extends javax.swing.JFrame {
+    private final DefaultListModel modeloList1=new DefaultListModel();
+    private final DefaultListModel modeloList2=new DefaultListModel();
+    private final String CADENA_VACIA="";
+    private Directorio dir;
+    
     public FrmDirectorio() {
         initComponents();
+        jlInicial.setModel(modeloList1);
+        jlFinal.setModel(modeloList2);
+        dir=new DirectorioV1();
+        txtNombre.requestFocus();
     }
 
     /**
@@ -60,7 +68,24 @@ public class FrmDirectorio extends javax.swing.JFrame {
 
         jLabel3.setText("Genero");
 
+        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNombreKeyPressed(evt);
+            }
+        });
+
+        txtEdad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtEdadKeyPressed(evt);
+            }
+        });
+
         cbGenero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "M", "F" }));
+        cbGenero.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                cbGeneroKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpDataEntryLayout = new javax.swing.GroupLayout(jpDataEntry);
         jpDataEntry.setLayout(jpDataEntryLayout);
@@ -100,6 +125,16 @@ public class FrmDirectorio extends javax.swing.JFrame {
         jpOperaciones.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
+        btnRegistrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnRegistrarKeyPressed(evt);
+            }
+        });
 
         btnLimpiar.setText("Limpiar");
 
@@ -251,6 +286,52 @@ public class FrmDirectorio extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        // TODO add your handling code here:
+        Registrar();
+    }//GEN-LAST:event_btnRegistrarActionPerformed
+    private void Registrar(){
+        String nombre=txtNombre.getText();
+        int edad=Integer.parseInt(txtEdad.getText());
+        if(edad<14 || edad>99)
+        {
+            JOptionPane.showMessageDialog(this, "Ingrese Edad mayor a 14 años","ERROR", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        String genero=(String)cbGenero.getSelectedItem();
+        Persona p=new Persona(nombre,edad,genero.charAt(0));
+        dir.add(p);
+        modeloList1.addElement(p.toString());
+        clearEntry();
+        txtNombre.requestFocus();
+    }
+    private void txtNombreKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            txtEdad.requestFocus();
+    }//GEN-LAST:event_txtNombreKeyPressed
+
+    private void txtEdadKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtEdadKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            cbGenero.requestFocus();
+    }//GEN-LAST:event_txtEdadKeyPressed
+
+    private void cbGeneroKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_cbGeneroKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER)
+            btnRegistrar.requestFocus();
+    }//GEN-LAST:event_cbGeneroKeyPressed
+
+    private void btnRegistrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnRegistrarKeyPressed
+        // TODO add your handling code here:
+        Registrar();
+    }//GEN-LAST:event_btnRegistrarKeyPressed
+    private void clearEntry(){
+        txtNombre.setText(CADENA_VACIA);
+        txtEdad.setText(CADENA_VACIA);
+        cbGenero.setSelectedIndex(0);
+    }
     /**
      * @param args the command line arguments
      */

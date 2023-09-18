@@ -11,16 +11,16 @@ public class Persona {
     
     private String name;
     private int age;
-    private char gener;
+    private char gender;
     
     static{
         compareAttribute=NAME;
     }
 
-    public Persona(String name, int age, char gener) {
+    public Persona(String name, int age, char gender) {
         this.name = name;
         this.age = age;
-        this.gener = gener;
+        this.gender = gender;
     }
 
     public String getName() {
@@ -32,7 +32,7 @@ public class Persona {
     }
 
     public char getGener() {
-        return gener;
+        return gender;
     }
 
     public void setName(String name) {
@@ -43,13 +43,16 @@ public class Persona {
         this.age = age;
     }
 
-    public void setGener(char gener) {
-        this.gener = gener;
+    public void setGener(char gender) {
+        this.gender = gender;
     }
 
+    
     @Override
-    public String toString() {
-        return "Persona{" + "name=" + name + ", age=" + age + ", gener=" + gener + '}';
+    public String toString( )  {
+        return this.name    + "||" +
+               this.age     + "||" +
+               this.gender;
     }
     
     public void setCompareAttribute(int attribute){
