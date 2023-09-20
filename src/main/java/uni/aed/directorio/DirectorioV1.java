@@ -1,5 +1,6 @@
 package uni.aed.directorio;
 import uni.aed.model.Persona;
+import uni.aed.ordenamiento.SortObjectPerson;
 
 public class DirectorioV1 implements Directorio{
     private static final int DEFAULT_SIZE=25;    
@@ -32,7 +33,18 @@ public class DirectorioV1 implements Directorio{
 
     @Override
     public Persona[] sort(int attribute, String algoritmo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(!(attribute==Persona.NAME || attribute==Persona.AGE))
+            throw new IllegalArgumentException();
+        Persona[] sortedList=new Persona[count];
+        for(int i=0;i< count;i++)
+            sortedList[i]=entry[i];        
+        SortObjectPerson o = new SortObjectPerson();
+        switch(algoritmo.toUpperCase()){
+            case "BURBUJA"->{
+                o.Burbuja(sortedList, attribute);
+            }
+        }
+        return sortedList;
     }
     
     private void enlarge(){
