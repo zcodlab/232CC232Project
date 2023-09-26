@@ -59,8 +59,6 @@ public class FrmDirectorio extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jlFinal = new javax.swing.JList<>();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jpDataEntry.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setText("Nombre");
