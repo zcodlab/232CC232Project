@@ -30,6 +30,8 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         mDataSimple = new javax.swing.JMenuItem();
         mDataObject = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        mSimpleLinkedList = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +54,19 @@ public class FrmPrincipal extends javax.swing.JFrame {
         jMenu1.add(mDataObject);
 
         jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("LinkedList");
+
+        mSimpleLinkedList.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        mSimpleLinkedList.setText("Simple LinkedList");
+        mSimpleLinkedList.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mSimpleLinkedListActionPerformed(evt);
+            }
+        });
+        jMenu2.add(mSimpleLinkedList);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -81,6 +96,12 @@ public class FrmPrincipal extends javax.swing.JFrame {
         FrmDataSimple v=new FrmDataSimple();
         v.setVisible(true);
     }//GEN-LAST:event_mDataSimpleActionPerformed
+
+    private void mSimpleLinkedListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mSimpleLinkedListActionPerformed
+        // TODO add your handling code here:
+        FrmLinkedList v=new FrmLinkedList();
+        v.setVisible(true);
+    }//GEN-LAST:event_mSimpleLinkedListActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,8 +140,10 @@ public class FrmPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem mDataObject;
     private javax.swing.JMenuItem mDataSimple;
+    private javax.swing.JMenuItem mSimpleLinkedList;
     // End of variables declaration//GEN-END:variables
 }
