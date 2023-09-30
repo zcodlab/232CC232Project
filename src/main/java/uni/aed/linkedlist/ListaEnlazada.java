@@ -20,6 +20,23 @@ public class ListaEnlazada {
             current=current.next;        
         current.next=newNodo;
     }
+    public void remove(int data){
+        if(head==null)
+            return;
+        //si el elemento a eliminar es el primer nodo
+        if(head.data==data){
+            head=head.next;
+            return;
+        }
+        //si el nodo a eliminar no es el primer nodo
+        Nodo current=head;
+        while(current.next!=null && current.next.data!=data)
+            current=current.next;
+        
+        if(current.next!=null)
+            current.next=current.next.next;
+        
+    }
     
     public String toString(){
         String lista="";
