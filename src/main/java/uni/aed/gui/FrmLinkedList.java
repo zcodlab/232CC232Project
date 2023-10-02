@@ -81,6 +81,11 @@ public class FrmLinkedList extends javax.swing.JFrame {
         });
 
         btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
 
         btnImprimir.setText("Imprimir");
         btnImprimir.addActionListener(new java.awt.event.ActionListener() {
@@ -284,6 +289,23 @@ public class FrmLinkedList extends javax.swing.JFrame {
         lista.clear();
         doubleLinkedList.clear();        
     }//GEN-LAST:event_btnLimpiarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        // TODO add your handling code here:
+        if (txtValor.getText().trim().isEmpty() ) {
+            JOptionPane.showMessageDialog(this,"Debe consignar el valor a eliminar", 
+                "WARNING",JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        switch(cbTipoLista.getSelectedIndex()){
+            //falrta incluir la elimacion de la simple linkedlist
+             case 1->{
+                doubleLinkedList.remove(Integer.parseInt(txtValor.getText()));
+        JOptionPane.showMessageDialog(this,"Se ha eliminado el valor indicado", 
+                "MENSAJE",JOptionPane.WARNING_MESSAGE);                 
+             }
+        }
+    }//GEN-LAST:event_btnEliminarActionPerformed
     private void Registrar(){
         if (txtValor.getText().trim().isEmpty() ) return;        
         
