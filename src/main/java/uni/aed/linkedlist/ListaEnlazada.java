@@ -37,6 +37,9 @@ public class ListaEnlazada {
             current.next=current.next.next;
         
     }
+    public void clear(){
+        head=null;     
+    }
     
     public String toString(){
         String lista="";
