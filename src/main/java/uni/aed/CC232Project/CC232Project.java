@@ -1,7 +1,7 @@
-package uni.aed.sortproject;
+package uni.aed.CC232Project;
 import uni.aed.gui.FrmPrincipal;
 
-public class SortProject {
+public class CC232Project {
 
     public static void main(String[] args) {
         FrmPrincipal v=new FrmPrincipal();        
