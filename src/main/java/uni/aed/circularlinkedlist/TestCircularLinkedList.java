@@ -19,6 +19,7 @@ public class TestCircularLinkedList {
         System.out.println("Ingrese el valor que desea eliminar de la lista enlazada: ");
         num=escaner.nextInt();
         lista.remove(num);
+        System.out.println("Elementos en la lista enlazada circular: ");
         lista.printList();
     }
 }
