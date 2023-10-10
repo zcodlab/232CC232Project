@@ -1,2 +1,7 @@
-# SortProject
-Proyecto javax.swing - Algoritmos Search && Sort en Java
+# 232CC232Project
+Proyecto Java del curso Algortimos y Estructuras de Datos 
+Algoritmos Search && Sort
+Lista Enlazadas:simples,dobles,circulares 
+Clases TDA
+
+
