@@ -1,7 +1,7 @@
 package uni.aed.linkedlistTDA;
 
-import uni.aed.list.NoSuchElementException;
-import uni.aed.list.IteratorTDA;
+import uni.aed.listTDA.NoSuchElementException;
+import uni.aed.listTDA.IteratorTDA;
 
 public class Iterador<E> implements IteratorTDA<E> {
     private Nodo actual;

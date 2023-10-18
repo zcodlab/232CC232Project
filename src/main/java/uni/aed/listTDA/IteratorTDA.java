@@ -1,4 +1,4 @@
-package uni.aed.list;
+package uni.aed.listTDA;
 
 public interface IteratorTDA<E> {
     public boolean hasNext();

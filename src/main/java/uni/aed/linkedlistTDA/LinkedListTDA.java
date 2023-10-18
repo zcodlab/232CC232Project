@@ -4,8 +4,8 @@ package uni.aed.linkedlistTDA;
     implementa la interface ListTDA
 */
 
-import uni.aed.list.ListTDA;
-import uni.aed.list.IteratorTDA;
+import uni.aed.listTDA.ListTDA;
+import uni.aed.listTDA.IteratorTDA;
 
 public class LinkedListTDA<E> implements ListTDA<E>{
     public static final int NO_ENCONTRADO=-1;

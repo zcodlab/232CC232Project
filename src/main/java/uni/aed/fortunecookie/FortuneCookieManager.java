@@ -1,10 +1,10 @@
 package uni.aed.fortunecookie;
 
-import java.util.List;
 import java.util.Random;
+import uni.aed.listTDA.ListTDA;
 
 public class FortuneCookieManager {
-    List<String> fortunas;
+    ListTDA<String> fortunas;
 
     public FortuneCookieManager() {
         FortuneCookieFile fortuneCookieFile=new FortuneCookieFile();

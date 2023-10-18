@@ -3,17 +3,17 @@ package uni.aed.fortunecookie;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.LinkedList;
+import uni.aed.linkedlistTDA.LinkedListTDA;
 
 public class FortuneCookieFile {
-    private LinkedList<String> lista;
+    private LinkedListTDA<String> lista;
 
     public FortuneCookieFile() {
-        lista = new LinkedList<>();        
+        lista = new LinkedListTDA<>();        
         loadFortunesFromFile("src\\main\\java\\uni\\aed\\FortuneCookie/fortunes.txt");
     }
 
-    public LinkedList<String> getLista() {
+    public LinkedListTDA<String> getLista() {
         return lista;
     }   
 
