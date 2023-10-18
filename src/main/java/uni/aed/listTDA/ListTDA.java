@@ -1,4 +1,4 @@
-package uni.aed.list;
+package uni.aed.listTDA;
 public interface ListTDA<E> {
     public void add(E elemento);
     public void add(int index,E elemento) throws IndexOutOfBoundsException;
