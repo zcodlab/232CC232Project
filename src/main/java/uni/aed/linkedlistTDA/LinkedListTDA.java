@@ -180,4 +180,17 @@ public class LinkedListTDA<E> implements ListTDA<E>{
             System.out.println((String)it.next());
     }
     
+    @Override
+    public String toString() {
+        String result="";
+        IteratorTDA it=new Iterador(head);
+        while(it.hasNext()){
+            if(result.length()==0)
+                result=""+it.next().toString();
+            else
+                result=result+"->"+it.next().toString();
+        }
+        return result;
+    }
+    
 }
