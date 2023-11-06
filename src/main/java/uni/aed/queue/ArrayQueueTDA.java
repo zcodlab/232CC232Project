@@ -7,6 +7,14 @@ public class ArrayQueueTDA<E> implements QueueTDA<E> {
     private int front;
     private int back;
 
+    public int getFront() {
+        return front;
+    }
+
+    public int getBack() {
+        return back;
+    }
+
     public ArrayQueueTDA(int tamanio) {
         if(tamanio<=0)
             throw new IllegalArgumentException("Capacidad mayor a cero");
