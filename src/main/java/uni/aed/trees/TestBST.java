@@ -16,5 +16,11 @@ public class TestBST {
         arbol.inorder();
         System.out.println("\n Recorrido postorder del arbol");
         arbol.postorder();
+        System.out.println("\n Recorrido en amplitud del arbol");
+        arbol.breadthFirst();
+        System.out.println("\n Realizando busqueda");
+        arbol.visit(arbol.search(70));
+        System.out.println("\n Realizando 2° busqueda");
+        arbol.visit(arbol.search(71));
     }
 }
