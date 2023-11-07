@@ -35,4 +35,24 @@ public class BST {
             preorder(p.left);
             preorder(p.right);}
     }
+    public void inorder(){//LVR
+        inorder(root);
+    }
+    public void inorder(BSTNode p){//LVR
+        if(p!=null){            
+            inorder(p.left);
+            visit(p);
+            inorder(p.right);}
+    }
+    
+    public void postorder(){//LRV
+        postorder(root);
+    }
+    public void postorder(BSTNode p){//LRV
+        if(p!=null){            
+            postorder(p.left);
+            postorder(p.right);
+            visit(p);   
+        }         
+    }
 }

@@ -10,7 +10,11 @@ public class TestBST {
         arbol.insert(40);
         arbol.insert(60);
         arbol.insert(80);
-        System.out.println("Recorrido preorder del arbol");
+        System.out.println("\n Recorrido preorder del arbol");
         arbol.preorder();
+        System.out.println("\n Recorrido inorder del arbol");
+        arbol.inorder();
+        System.out.println("\n Recorrido postorder del arbol");
+        arbol.postorder();
     }
 }
