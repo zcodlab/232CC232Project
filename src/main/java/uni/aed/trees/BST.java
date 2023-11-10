@@ -90,5 +90,42 @@ public class BST {
             }
         }
     }
+    public void deleteByMerging(int e1){
+        BSTNode tmp,node,p=root, prev=null;
+        //encontrar el nodo p con el elemento e1
+        while(p!=null && p.key!=e1){
+            prev=p;
+            if(p.key<e1)
+                p=p.right;
+            else
+                p=p.left;                        
+        }
+        node=p;
+        if(p!=null && p.key==e1){
+            //determinar si el nodo tiene hijo(izq,right,ambos
+            if(node.right==null)
+                node=node.left;//el nodod tiene hijo izq
+            else if(node.left==null)
+                node=node.right;//el nodod tiene hijo der
+            else {//recurrir a la fusion de subarboles
+                tmp=node.left;
+                while(tmp.right!=null)
+                    tmp=tmp.right;
+                //establecer el enlace entre el nodo del extremo derecho 
+                //del subarbol izq y el subarbol der
+                tmp.right=node.right;
+                node=node.left;
+            }
+            if (p==root)
+                root=node;
+            else if(prev.left==p)
+                prev.left=node;
+            else
+                prev.right=node;                
+        }
+        else if(root!=null)
+            System.out.println("El valor "+ e1 + "no se encuentra en el arbol" );
+        else System.out.println("El arbol esta vacio" );
+    }
     
 }
