@@ -127,5 +127,46 @@ public class BST {
             System.out.println("El valor "+ e1 + "no se encuentra en el arbol" );
         else System.out.println("El arbol esta vacio" );
     }
+    //Imlementacion de algoritmo de elimnacion por copiado
+    public void deleteByCopying(int e1){
+        BSTNode tmp,node,p=root, prev=null,previous;
+        //encontrar el nodo p con el elemento e1
+        while(p!=null && p.key!=e1){
+            prev=p;
+            if(p.key<e1)
+                p=p.right;
+            else
+                p=p.left;                        
+        }
+        node=p;
+        if(p!=null && p.key==e1){
+            if(node.right==null)//no tiene hijo derecho
+                node=node.left;
+            else if (node.left==null)//no tiene hijo izq
+                node=node.right;
+            else{//el nodo tiene dos hijos
+                tmp=node.left;
+                previous=node;
+                while(tmp.right!=null){
+                    previous=tmp;
+                    tmp=tmp.right;
+                }
+                node.key=tmp.key;//copia la referencia del nodo que se esta elimnando
+                if(previous==node)
+                    previous.left=tmp.left;
+                else
+                    previous.right=tmp.left;                            
+            }
+            if(p==root)
+                root=node;
+            else if(prev.left==p)
+                prev.left=node;
+            else prev.right=node;                
+        }
+        else if(root!=null)
+            System.out.println("El valor "+ e1 + "no se encuentra en el arbol" );
+        else System.out.println("El arbol esta vacio" );
+            
+    }
     
 }
