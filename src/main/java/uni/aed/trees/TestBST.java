@@ -7,7 +7,7 @@ public class TestBST {
         //TestBSTdeleteByMergingCase3();
         //TestBSTdeleteByCopyingCase1();
         //TestBSTdeleteByCopyingCase2();
-        //TestBSTdeleteByCopyingCase3();
+        TestBSTdeleteByCopyingCase3();
     }
     public static void TestBSTdeleteByCopyingCase3(){
         BST arbol=new BST();
