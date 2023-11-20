@@ -1,7 +1,5 @@
 package uni.aed.trees;
 
-import java.util.Queue;
-
 public class BST {
     protected BSTNode root;
 
@@ -91,8 +89,7 @@ public class BST {
         }
     }
     public void deleteByMerging(int e1){
-        BSTNode tmp,node,p=root, prev=null;
-        //encontrar el nodo p con el elemento e1
+        BSTNode tmp,node,p=root, prev=null;       
         while(p!=null && p.key!=e1){
             prev=p;
             if(p.key<e1)
@@ -101,18 +98,15 @@ public class BST {
                 p=p.left;                        
         }
         node=p;
-        if(p!=null && p.key==e1){
-            //determinar si el nodo tiene hijo(izq,right,ambos
+        if(p!=null && p.key==e1){            
             if(node.right==null)
-                node=node.left;//el nodod tiene hijo izq
+                node=node.left;
             else if(node.left==null)
-                node=node.right;//el nodod tiene hijo der
-            else {//recurrir a la fusion de subarboles
+                node=node.right;
+            else {
                 tmp=node.left;
                 while(tmp.right!=null)
-                    tmp=tmp.right;
-                //establecer el enlace entre el nodo del extremo derecho 
-                //del subarbol izq y el subarbol der
+                    tmp=tmp.right;               
                 tmp.right=node.right;
                 node=node.left;
             }
