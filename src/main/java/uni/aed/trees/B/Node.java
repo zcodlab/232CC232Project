@@ -6,10 +6,10 @@ import java.util.Comparator;
 public class Node<T extends Comparable<T>>{
 
     private T[] keys = null;
-    private int keysSize = 0;
+    protected int keysSize = 0;
     protected Node<T> parent = null;
     protected Node<T>[] children = null;
-    private int childrenSize = 0;
+    protected int childrenSize = 0;
 
     public Node(Node<T> parent, int maxKeySize, int maxChildrenSize) {
         this.parent = parent;
