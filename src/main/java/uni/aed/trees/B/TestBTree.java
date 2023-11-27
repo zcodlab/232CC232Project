@@ -25,7 +25,12 @@ public class TestBTree {
         bst.add(23);
         bst.add(24);
         System.out.println(bst.toString());
-
+        bst.remove(6);
+        System.out.println(bst.toString());
+        bst.remove(7);
+        System.out.println(bst.toString());
+        bst.remove(8);
+        System.out.println(bst.toString());
 
     }
 }
