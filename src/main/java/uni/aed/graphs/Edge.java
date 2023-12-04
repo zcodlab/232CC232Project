@@ -1,11 +1,14 @@
 package uni.aed.graphs;
-
+/*
+* Clase Edge o arista de un grafo
+*/
 public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
 
-    protected Vertex<T> from = null;
-    protected Vertex<T> to = null;
+    protected Vertex<T> from = null;//nodo o vertice origen
+    protected Vertex<T> to = null;  //nodo o vertice destino
     protected int cost = 0;
-
+    
+    //constructor con tres parametros
     public Edge(int cost, Vertex<T> from, Vertex<T> to) {
         if (from == null || to == null)
             throw (new NullPointerException("Both 'to' and 'from' vertices need to be non-NULL."));
@@ -14,7 +17,7 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
         this.from = from;
         this.to = to;
     }
-
+    //constructor con un parametro del mismo tipo(arista). El objeto actual se inicializa con la arista pasada como parametro
     public Edge(Edge<T> e) {
         this(e.cost, e.from, e.to);
     }
@@ -26,17 +29,18 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
     public void setCost(int cost) {
         this.cost = cost;
     }
-
+    //retorna el vertice origen
     public Vertex<T> getFromVertex() {
         return from;
     }
-
+    //retorna el vertice destino
     public Vertex<T> getToVertex() {
         return to;
     }
 
     /**
-     * {@inheritDoc}
+     * retorna el hashcode determinado de la multiplicacion del costo de la arista por los hashcode de
+     * su vertice origen y el hashcode de su vertice destino
      */
     @Override
     public int hashCode() {
@@ -45,7 +49,7 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
     }
 
     /**
-     * {@inheritDoc}
+     * compara dos objetos de tipo arista en funcion de sus costos, nodos origen y nodos destino
      */
     @Override
     public boolean equals(Object e1) {
@@ -53,24 +57,24 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
             return false;
 
         final Edge<T> e = (Edge<T>) e1;
-
+        //compara costos de la arista actual y la arista pasada como parametro
         final boolean costs = this.cost == e.cost;
         if (!costs)
-            return false;
+            return false;//si costos difieren retorna falso
 
-        final boolean from = this.from.equals(e.from);
+        final boolean from = this.from.equals(e.from);//compara nodos origen de ambos objetos arista
         if (!from)
-            return false;
+            return false;//si nodos origen difieren retorna falso
 
-        final boolean to = this.to.equals(e.to);
+        final boolean to = this.to.equals(e.to);//compara nodos destino de ambos objetos arista
         if (!to)
-            return false;
+            return false;//si nodos destino difieren retorna falso
 
         return true;
     }
 
     /**
-     * {@inheritDoc}
+     * compara dos objetos de tipo arista en funcion de sus costos, nodos origen y nodos destino
      */
     @Override
     public int compareTo(Edge<T> e) {
@@ -91,13 +95,27 @@ public class Edge<T extends Comparable<T>> implements Comparable<Edge<T>> {
     }
 
     /**
-     * {@inheritDoc}
+     * Retorna un string con los datos detallados de las aristas del grafo
      */
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("[ ").append(from.value).append("(").append(from.weight).append(") ").append("]").append(" -> ")
-               .append("[ ").append(to.value).append("(").append(to.weight).append(") ").append("]").append(" = ").append(cost).append("\n");
+        builder.append("[ ")
+                .append(from.value)//origin value
+                .append("(")
+                .append(from.weight)
+                .append(") ")
+                .append("]")//cierra origin value
+                .append(" -> ")
+               .append("[ ")
+                .append(to.value)//destino value
+                .append("(")
+                .append(to.weight)
+                .append(") ")
+                .append("]")//cierra destino value
+                .append(" = ")
+                .append(cost)//costo
+                .append("\n");
         return builder.toString();
     }
     
