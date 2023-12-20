@@ -1,7 +1,10 @@
 package uni.aed.trees.softwarestore;
 
 import java.util.Scanner;
-
+/* Esta clase TestSoftwareStore crea una instancia de SoftwareStore que administra una tienda de software.
+ * Permite al usuario realizar acciones como vender software y salir del programa a través de un menú interactivo.
+ * También realiza la limpieza del archivo de software al finalizar.
+*/
 public class TestSoftwareStore {
     public static void main(String[] args) {
         SoftwareStore softwareStore = new SoftwareStore("src\\main\\java\\uni\\aed\\trees\\softwarestore/software.txt");
@@ -56,7 +59,7 @@ public class TestSoftwareStore {
             }
         } while (choice != 4);
 
-        // Clean up the file
-        softwareStore.cleanUpFile1();
+        // limpia el archivo software.txt al finalizar, de acuerdo a las especificaciones brindadas en el requerimiento
+        softwareStore.cleanUpFile();
     }
 }

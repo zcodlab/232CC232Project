@@ -38,3 +38,6 @@ Adobe Photoshop	7.0	21	580
 Norton Utilities	1.0	10	45
 Visual J++ Standard	6.0	19	40
 Visual J++ Professional	6.0	27	100
+
+
+*Antes de realizar sus pruebas de funcionamiento del programa, mantenga una copia del archivo software.txt
