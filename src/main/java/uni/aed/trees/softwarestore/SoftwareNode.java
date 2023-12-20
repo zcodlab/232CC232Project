@@ -1,17 +1,18 @@
 package uni.aed.trees.softwarestore;
 
-// Clase que representa un nodo del árbol de búsqueda binario SoftwareStore para almacenar software.
+/* La clase SoftwareNode: Representa un nodo en un árbol que almacena información de paquetes de software. 
+Cada nodo contiene datos como el nombre, versión, cantidad, precio y posición en el archivo. 
+También tiene referencias a nodos hijos en el árbol. Esta clase organiza la información de los paquetes de software 
+en la tienda.*/
 public class SoftwareNode {
-    String name;        // Nombre del software.
-    String version;     // Versión del software.
-    int quantity;       // Cantidad disponible del software.
-    int price;          // Precio del software
-    int filePosition;   // Posición del archivo del software en almacenamiento.
+    String name;        // Nombre del paquete de software
+    String version;     // Versión del paquete de software
+    int quantity;       // Cantidad disponible en la tienda
+    int price;          // Precio del paquete de software
+    int filePosition;   // Posición del registro en el archivo de software
 
-    // Nodo hijo izquierdo, siguiendo la estructura de árbol binario.
-    SoftwareNode left;
-    // Nodo hijo derecho, siguiendo la estructura de árbol binario.
-    SoftwareNode right;
+    SoftwareNode left;  // Referencia al nodo izquierdo en el árbol binario
+    SoftwareNode right; // Referencia al nodo derecho en el árbol binario
 
     // Constructor del nodo, inicializa los datos del software y establece los nodos hijos a null.
     public SoftwareNode(String name, String version, int quantity, int price, int filePosition) {

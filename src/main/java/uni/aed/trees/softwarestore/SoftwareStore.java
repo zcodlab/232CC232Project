@@ -10,9 +10,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-/*
-Clase que nos provee de las herramientas para manejar la tienda vender, añadir y actualizar paquetes de software
-*/
+/*Clase SoftwareStore: Gestiona un inventario de software como un árbol binario de búsqueda (BST).
+ Permite operaciones de lectura desde archivo, inserción, venta y eliminación de software,
+ así como actualización del archivo de datos basado en cambios en el BST.*/
 public class SoftwareStore {
     private SoftwareNode root;
     private String fileName;
@@ -54,7 +54,7 @@ public class SoftwareStore {
         }
     }
 
-    // Method to insert a new node into the BST
+    // Método para insertar un nuevo nodo en el Arbol de busqueda binaria(BST)
     private SoftwareNode insert(SoftwareNode root, SoftwareNode newNode) {
         if (root == null) {
             return newNode;
@@ -74,7 +74,7 @@ public class SoftwareStore {
         return root;
     }
 
-    // Method to update the tree and file when a software package is sold
+    // Método para actualizar el árbol BST y el archivo cuando se vende un paquete de software
     public void sellSoftware(String name, String version, int quantitySold) {
         SoftwareNode node = findNode(root, name, version);
 
@@ -82,7 +82,7 @@ public class SoftwareStore {
             node.quantity -= quantitySold;
             updateFile();
             if (node.quantity <= 0) {
-                // If quantity becomes 0 or less, delete the node
+                // Si la cantidad es 0 o menor, se elimina el nodo
                 root = deleteNode(root, name, version);
             }
         } else {
@@ -97,7 +97,7 @@ public class SoftwareStore {
         updateFile(); //Actualiza archivo .txt
     }
 
-    // Method to delete a node from the BST
+    // Metodo para eliminar un nodo del arbol BST
     private SoftwareNode deleteNode(SoftwareNode root, String name, String version) {
         if (root == null) {
             return root;
@@ -129,7 +129,7 @@ public class SoftwareStore {
         return root;
     }
 
-    // Method to find the node with the minimum value in a BST
+    // Metodo para ubicar el nodo con el minimo valor en un arbol BST
     private SoftwareNode minValueNode(SoftwareNode root) {
         SoftwareNode current = root;
         while (current.left != null) {
@@ -138,7 +138,7 @@ public class SoftwareStore {
         return current;
     }
 
-    // Method to find a node in the BST
+    // Metodo para buscar un nodo en el arbol BST
     private SoftwareNode findNode(SoftwareNode root, String name, String version) {
         if (root == null || (root.name.equals(name) && root.version.equals(version))) {
             return root;
@@ -153,7 +153,7 @@ public class SoftwareStore {
         }
     }
 
-    // Method to update the file with the current BST information
+    // Metodo para actualizar el archivo con informacion actualizada del arbol BST
     private void updateFile() {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             inorderWriteToFile(root, writer);
@@ -162,7 +162,7 @@ public class SoftwareStore {
         }
     }
 
-    // Inorder traversal to write nodes to the file
+    // Recorrido Inorder para escribir nodos en el archivo
     private void inorderWriteToFile(SoftwareNode root, BufferedWriter writer) throws IOException {
         if (root != null) {
             inorderWriteToFile(root.left, writer);
@@ -195,54 +195,16 @@ public class SoftwareStore {
         }
     }
     
-    // Method to display the menu
+    // Metodo para visualizar el menu de opciones
     public void displayMenu() {
-        System.out.println("1. Sell Software");
+        System.out.println("1. Sell Software");//Vender software 
         System.out.println("2. Add Software"); //Agregar software
-        System.out.println("3. Ver Inventario"); 
+        System.out.println("3. Ver Inventario");//Visualizar estado actual del inventario u stock 
         System.out.println("4. Exit");
     }
-     // Method to clean up the file by moving entries from the end to positions with 0 quantities
+     
+    //Método para limpiar el archivo moviendo entradas desde el final a posiciones con 0 cantidades       
     public void cleanUpFile() {        
-        try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
-             BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".tmp"))) {
-
-            String line;
-            int position = 0;
-
-            while ((line = reader.readLine()) != null) {
-                String[] parts = line.split("\\s+");
-                String name = parts[0];
-                String version = parts[1];
-                int quantity = Integer.parseInt(parts[2]);
-                int price = Integer.parseInt(parts[3]);
-
-                if (quantity > 0) {
-                    writer.write(name + " " + version + " " + quantity + " " + price);
-                    writer.newLine();
-                }
-
-                position++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        // Rename the cleaned file to the original file        
-        File originalFile = new File(fileName);
-        if (originalFile.delete()) {
-            // Renombra el archivo temporal al nombre original
-            File tempFile = new File(fileName + ".tmp");
-            if (tempFile.renameTo(originalFile))
-                System.out.println("Archivo limpiado y actualizado correctamente.");
-            else
-                System.out.println("Error al renombrar el archivo temporal.");            
-        } else
-            System.out.println("Error al borrar el archivo original.");
-        
-    }
-    
-    public void cleanUpFile1() {        
         try (BufferedReader reader = new BufferedReader(new FileReader(fileName));
              BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + ".tmp"))) {
 
